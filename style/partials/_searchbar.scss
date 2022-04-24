@@ -1,0 +1,29 @@
+.searchbar{
+
+
+    &__field{
+        border: none;
+        outline: none;
+        padding: 0.4em 1em;
+        border-radius: 2rem;
+        background: #7c7c7c2b;
+        font-family: inherit;
+        font-size: 1.2rem;
+        color:white;
+    }
+}
+
+
+
+
+button{
+    border-radius: 50%;
+    border: none;
+    height: 3rem;
+    width: 3rem;
+    background: #7c7c7c2b;
+    color: gray;
+    transition: 0.5s ease-in-out;
+    
+
+}

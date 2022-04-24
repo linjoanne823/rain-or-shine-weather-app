@@ -1,0 +1,69 @@
+.searchbar__field {
+  border: none;
+  outline: none;
+  padding: 0.4em 1em;
+  border-radius: 2rem;
+  background: rgba(124, 124, 124, 0.168627451);
+  font-family: inherit;
+  font-size: 1.2rem;
+  color: white;
+}
+
+button {
+  border-radius: 50%;
+  border: none;
+  height: 3rem;
+  width: 3rem;
+  background: rgba(124, 124, 124, 0.168627451);
+  color: gray;
+  transition: 0.5s ease-in-out;
+}
+
+.weather-section {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  line-height: 2rem;
+}
+.weather-section__inner-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.weather-section__city {
+  font-size: 2rem;
+  padding: 1rem;
+}
+.weather-section__temperature {
+  font-size: 1.5rem;
+  padding-bottom: 1rem;
+}
+.weather-section__icon {
+  width: 8rem;
+}
+.weather-section__description {
+  font-size: 1.5rem;
+  padding: 1rem;
+}
+
+body {
+  font-family: Verdana, Geneva, Tahoma, sans-serif, Helvetica, sans-serif;
+  padding: 5rem;
+  background-image: url("https://source.unsplash.com/1600x900/?landscape");
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+}
+
+.main-card {
+  background: rgba(0, 0, 0, 0.8156862745);
+  color: white;
+  padding: 2em;
+  max-width: 22rem;
+  border-radius: 30px;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}/*# sourceMappingURL=weather.css.map */

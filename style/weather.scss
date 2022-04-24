@@ -1,0 +1,31 @@
+@use './partials/searchbar';
+@use './partials/weather-section';
+
+
+body{
+    font-family: Verdana, Geneva, Tahoma, sans-serif, Helvetica, sans-serif;
+    padding:5rem;
+    background-image: url('https://source.unsplash.com/1600x900/?landscape');
+    display:flex;
+    flex-direction:row;
+    justify-content:center;
+
+};
+
+.main-card{
+    background: #000000d0;
+    color: white;
+    padding: 2em;
+    max-width:22rem;
+
+    border-radius: 30px;
+    width: 100%;
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    justify-content:center;
+
+    
+
+    
+}
