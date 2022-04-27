@@ -1,43 +1,79 @@
-// weather display container 
+// weather display container
+const apiKey= '6cb1f5c9f30bd03bd46751cfc5321783'
 
-const outerContainer= document.getElementById("weather");
-outerContainer.classList.add("weather-section")
+const getWeatherFromServer = async(city)=>{
+    try{
+    const result = await axios.get(`https://api.openweathermap.org/data/2.5/weather?q=${city}&units=metric&appid=${apiKey}`)
+    const weatherFromServer = result.data;
+    console.log(weatherFromServer);
+    displayWeatherDetails(weatherFromServer);
+    }catch(error){
+        console.log(error);
+    }
 
-const city = document.createElement('div');
+   
+}
+
+getWeatherFromServer();
+
+const displayWeatherDetails = (weatherToDisplay)=>{
+
+const outerContainer = document.getElementById("weather");
+outerContainer.classList.add("weather-section");
+
+const city = document.createElement("div");
 city.classList.add("weather-section__city");
-city.innerText = "Toronto"
 
-const temperature = document.createElement('div');
-temperature.classList.add("weather-section__temperature");
-temperature.innerText = "20 °C"
+city.innerText = weatherToDisplay.name;
 
-const innerContainer = document.createElement('div');
+const temp = document.createElement("div");
+temp.classList.add("weather-section__temperature");
+temp.innerText = weatherToDisplay.main.temp;
+
+const innerContainer = document.createElement("div");
 innerContainer.classList.add("weather-section__inner-container");
 
-const icon = document.createElement('img');
+const icon = document.createElement("img");
 icon.classList.add("weather-section__icon");
-icon.src = "https://www.seekpng.com/png/detail/133-1330400_weather-icon-png-image-transparent-background-weather-icon.png"
+icon.innerText=weatherToDisplay.weather.icon;
 
-
-const description = document.createElement('div');
+const description = document.createElement("div");
 description.classList.add("weather-section__description");
-description.innerText="Cloudy"
-
+description.innerText = weatherToDisplay.weather.description;
 
 innerContainer.appendChild(icon);
-innerContainer.appendChild(description)
+innerContainer.appendChild(description);
 
-const humidity = document.createElement('div');
+const humidity = document.createElement("div");
 humidity.classList.add("weather-section__humidity");
-humidity.innerText="Humidity: 30%"
+humidity.innerText = weatherToDisplay.main.humidity;
 
-const wind = document.createElement('div');
-wind.classList.add("weather-section__wind");
-wind.innerText="Wind speed: 5.6 km/h";
-
+const speed = document.createElement("div");
+speed.classList.add("weather-section__wind");
+speed.innerText = weatherToDisplay.wind.speed;
 
 outerContainer.appendChild(city);
-outerContainer.appendChild(temperature);
+outerContainer.appendChild(temp);
 outerContainer.appendChild(innerContainer);
 outerContainer.appendChild(humidity);
-outerContainer.appendChild(wind)
+outerContainer.appendChild(speed);
+
+
+
+
+return outerContainer;
+
+}
+
+
+
+const searchForWeather= document.getElementById('search');
+ 
+searchForWeather.addEventListener('submit', function (event){
+    event.preventDefault();
+    getWeatherFromServer(event.target.cityInput.value);
+   
+    
+    
+});
+

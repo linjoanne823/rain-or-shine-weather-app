@@ -7,7 +7,7 @@
   <title>Weather App</title>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
   <link rel = "stylesheet" href="./style/weather.css">
-
+  <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
   
   
   
@@ -15,11 +15,11 @@
 
 <body>
     <div class="main-card">
-        <div class="searchbar">
-            <div>
-            <input type="text" class="searchbar__field" placeholder="Search">
+        <div class="searchbar" >
+            <form id ="search">
+            <input type="text" class="searchbar__field" placeholder="Search" name = "cityInput">
             <button class= "fa fa-search"></button>
-            </div>
+            </form>
   
         <div id="weather"></div>
     </div>
