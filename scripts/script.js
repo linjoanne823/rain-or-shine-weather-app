@@ -1,79 +1,71 @@
-// weather display container
-const apiKey= '6cb1f5c9f30bd03bd46751cfc5321783'
+const apiKey = "6cb1f5c9f30bd03bd46751cfc5321783";
 
-const getWeatherFromServer = async(city)=>{
-    try{
-    const result = await axios.get(`https://api.openweathermap.org/data/2.5/weather?q=${city}&units=metric&appid=${apiKey}`)
+const getWeatherFromServer = async (city) => {
+  try {
+    const result = await axios.get(
+      `https://api.openweathermap.org/data/2.5/weather?q=${city}&units=metric&appid=${apiKey}`
+    );
     const weatherFromServer = result.data;
     console.log(weatherFromServer);
     displayWeatherDetails(weatherFromServer);
-    }catch(error){
-        console.log(error);
-    }
-
-   
-}
+  } catch (error) {
+    console.log(error);
+  }
+};
 
 getWeatherFromServer();
+//display weather container
+const displayWeatherDetails = (weatherToDisplay) => {
+  const outerContainer = document.getElementById("weather");
+  outerContainer.classList.add("weather-section");
 
-const displayWeatherDetails = (weatherToDisplay)=>{
+  const city = document.createElement("div");
+  city.classList.add("weather-section__city");
 
-const outerContainer = document.getElementById("weather");
-outerContainer.classList.add("weather-section");
+  city.innerText = weatherToDisplay.name;
 
-const city = document.createElement("div");
-city.classList.add("weather-section__city");
+  const temp = document.createElement("div");
+  temp.classList.add("weather-section__temperature");
+  temp.innerText = 'Temp: ' + weatherToDisplay.main.temp + '';
 
-city.innerText = weatherToDisplay.name;
+  const innerContainer = document.createElement("div");
+  innerContainer.classList.add("weather-section__inner-container");
 
-const temp = document.createElement("div");
-temp.classList.add("weather-section__temperature");
-temp.innerText = weatherToDisplay.main.temp;
+  const icon = document.createElement("img");
+  icon.classList.add("weather-section__icon");
+  icon.innerText = weatherToDisplay.weather[0].icon;
+//   icon.setAttribute(src, )
 
-const innerContainer = document.createElement("div");
-innerContainer.classList.add("weather-section__inner-container");
+  const description = document.createElement("div");
+  description.classList.add("weather-section__description");
+  description.innerText = weatherToDisplay.weather[0].description;
+  
 
-const icon = document.createElement("img");
-icon.classList.add("weather-section__icon");
-icon.innerText=weatherToDisplay.weather.icon;
+  innerContainer.appendChild(icon);
+  innerContainer.appendChild(description);
 
-const description = document.createElement("div");
-description.classList.add("weather-section__description");
-description.innerText = weatherToDisplay.weather.description;
+  const humidity = document.createElement("div");
+  humidity.classList.add("weather-section__humidity");
+  humidity.innerText = 'Humidity: ' + weatherToDisplay.main.humidity;
 
-innerContainer.appendChild(icon);
-innerContainer.appendChild(description);
+  const speed = document.createElement("div");
+  speed.classList.add("weather-section__wind");
+  speed.innerText = 'Wind speed: ' + weatherToDisplay.wind.speed + 'km/hr';
 
-const humidity = document.createElement("div");
-humidity.classList.add("weather-section__humidity");
-humidity.innerText = weatherToDisplay.main.humidity;
+  outerContainer.appendChild(city);
+  outerContainer.appendChild(temp);
+  outerContainer.appendChild(innerContainer);
+  outerContainer.appendChild(humidity);
+  outerContainer.appendChild(speed);
 
-const speed = document.createElement("div");
-speed.classList.add("weather-section__wind");
-speed.innerText = weatherToDisplay.wind.speed;
+  return outerContainer;
+};
 
-outerContainer.appendChild(city);
-outerContainer.appendChild(temp);
-outerContainer.appendChild(innerContainer);
-outerContainer.appendChild(humidity);
-outerContainer.appendChild(speed);
+const searchForWeather = document.getElementById("search");
 
-
-
-
-return outerContainer;
-
-}
-
-
-
-const searchForWeather= document.getElementById('search');
- 
-searchForWeather.addEventListener('submit', function (event){
-    event.preventDefault();
-    getWeatherFromServer(event.target.cityInput.value);
-   
-    
-    
+searchForWeather.addEventListener("submit", function (event) {
+  event.preventDefault();
+  const displayWeather = document.getElementById("weather");
+  displayWeather.innerHTML = "";
+  getWeatherFromServer(event.target.cityInput.value);
 });
-
