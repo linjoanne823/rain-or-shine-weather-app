@@ -51,8 +51,16 @@ body {
   padding: 5rem;
   background-image: url("https://source.unsplash.com/1600x900/?landscape");
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
   justify-content: center;
+}
+
+.header {
+  color: white;
+  font-size: 2.5rem;
+  font-weight: bold;
+  padding-bottom: 5rem;
+  text-align: center;
 }
 
 .main-card {
@@ -60,6 +68,7 @@ body {
   color: white;
   padding: 2em;
   max-width: 22rem;
+  margin-left: 17rem;
   border-radius: 30px;
   width: 100%;
   display: flex;

@@ -33,8 +33,9 @@ const displayWeatherDetails = (weatherToDisplay) => {
 
   const icon = document.createElement("img");
   icon.classList.add("weather-section__icon");
-  icon.innerText = weatherToDisplay.weather[0].icon;
-//   icon.setAttribute(src, )
+
+  icon.setAttribute('src',`http://openweathermap.org/img/wn/${weatherToDisplay.weather[0].icon}@2x.png`)
+  
 
   const description = document.createElement("div");
   description.classList.add("weather-section__description");
